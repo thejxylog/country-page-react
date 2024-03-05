@@ -1,0 +1,20 @@
+import styled from 'styled-components';
+
+const StyledMain = styled.main`
+  width: 1200px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 32px;
+  margin: 0 auto 48px auto;
+  padding: 24px 32px;
+  border: 1px solid var(--color-stone-600);
+  border-radius: 12px;
+  background-color: var(--color-stone-800);
+  transform: translateY(-60px);
+`;
+
+function Main({ children }) {
+  return <StyledMain>{children}</StyledMain>;
+}
+
+export default Main;
