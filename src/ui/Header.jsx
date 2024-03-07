@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import Search from './Search';
-import { useCountries } from '../hooks/useCountries';
+import { useCountriesListSize } from '../hooks/useCountriesListSize';
 
 const StyledHeader = styled.header`
   display: flex;
@@ -13,14 +13,15 @@ const StyledHeader = styled.header`
 
 const Searchlist = styled.p`
   color: var(--color-stone-300);
+  font-weight: 600;
 `;
 
 function Header() {
-  const { countries } = useCountries();
+  const { listSize } = useCountriesListSize();
 
   return (
     <StyledHeader>
-      <Searchlist>Found {countries?.length} countries</Searchlist>
+      <Searchlist>Found {listSize} countries</Searchlist>
       <Search />
     </StyledHeader>
   );

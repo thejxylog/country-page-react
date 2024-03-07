@@ -1,13 +1,27 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+
 import styled from 'styled-components';
 
-const StyledSidebar = styled.aside``;
+import FormRow from './FormRow';
+import SortBy from '../features/Filters/SortBy';
+import Region from '../features/Filters/Region';
+import Status from '../features/Filters/Status';
 
-function Sidebar({ countryList, onCountryList }) {
-  const [sortBy, setSortBy] = useState('population');
-  const [region, setRegion] = useState('');
+const StyledSidebar = styled.aside`
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+`;
 
-  return <StyledSidebar>Sidebar</StyledSidebar>;
+function Sidebar() {
+  return (
+    <StyledSidebar>
+      <SortBy />
+      <Region />
+      <Status />
+    </StyledSidebar>
+  );
 }
 
 export default Sidebar;

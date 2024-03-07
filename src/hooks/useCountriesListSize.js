@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import { getCountries, getListSize } from '../services/apiCountry';
 import { useSearchParams } from 'react-router-dom';
+import { getListSize } from '../services/apiCountry';
 
-export function useCountries() {
+export function useCountriesListSize() {
   const [searchParams] = useSearchParams();
 
   // SORT
@@ -16,17 +16,14 @@ export function useCountries() {
   const statusRaw = searchParams.get('status') || [];
   const statusAll = statusRaw.length ? statusRaw.split(',') : [];
 
-  // PAGINATION
-  const page = searchParams.get('page') ? +searchParams.get('page') : 1;
-
   const {
-    data: countries,
+    data: listSize,
     isLoading,
     error,
   } = useQuery({
-    queryKey: ['countries', sort, regionAll, statusAll, page],
-    queryFn: () => getCountries({ sort, regionAll, statusAll, page }),
+    queryKey: ['countries', sort, regionAll, statusAll],
+    queryFn: () => getListSize({ sort, regionAll, statusAll }),
   });
 
-  return { countries, isLoading };
+  return { listSize, isLoading };
 }
